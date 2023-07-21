@@ -1,7 +1,7 @@
 import { createIntegrationCore } from "./core";
 import { createReactDevtoolsHookHandlers } from "./devtools-hook-handlers";
 import { createReactInteractionApi } from "./interaction-api";
-import { createHighlightApi } from "./highlight-api";
+// import { createHighlightApi } from "./highlight-api";
 import {
   ReactInternals,
   ReactIntegrationApi,
@@ -18,10 +18,10 @@ export function attach(
   const integrationCore = createIntegrationCore(renderer, recordEvent);
   const dispatcherApi = createDispatcherTrap(renderer, integrationCore);
   const interactionApi = createReactInteractionApi(integrationCore);
-  const highlightApi = createHighlightApi(interactionApi);
+  // const highlightApi = createHighlightApi(interactionApi);
 
   removeCommands({
-    highlightApi,
+    highlightApi: (() => undefined) as any,
     ...integrationCore.memoryLeaksApi,
   });
 

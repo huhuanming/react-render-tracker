@@ -1,4 +1,4 @@
-import { getHost } from "rempl";
+// import { getHost } from "rempl";
 import config from "./config";
 import { installReactDevtoolsHook } from "./react-devtools-hook";
 import {
@@ -15,6 +15,6 @@ export const hook = installReactDevtoolsHook(
   publishReactUnsupportedRenderer
 );
 
-if (config.inpage) {
-  getHost().activate();
-}
+// if (config.inpage) {
+//   getHost().activate();
+// }

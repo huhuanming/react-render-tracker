@@ -3,3 +3,4 @@ node_modules/
 .gh-pages
 .history
 esm
+.DS_Store

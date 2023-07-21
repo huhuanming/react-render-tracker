@@ -61,7 +61,6 @@ export function publishReactUnsupportedRenderer(
 
 export function publishReactRenderer(id: number, renderer: ReactInternals) {
   const channelId: `events:${number}` = `events:${id}`;
-
   reactRenderers.push({
     id,
     ...getRendererInfo(renderer),
@@ -79,7 +78,7 @@ export function publishReactRenderer(id: number, renderer: ReactInternals) {
   );
   const recordEvent: RecordEventHandler = payload => {
     const id = eventIdSeed++;
-
+    // console.log("publishReactRenderer-RecordEventHandler", id, payload);
     events.push({
       id,
       // timestamp: Math.trunc(getTimestamp()),
@@ -139,8 +138,8 @@ export function remoteCommands({
   subscribeToExposedToGlobalLeaksState,
   cancelExposingLeakedObjectsToGlobal,
   exposeLeakedObjectsToGlobal,
-  highlightApi,
-}: RemoteCommandsApi) {
+}: // highlightApi,
+RemoteCommandsApi) {
   const memoryLeaksNs = publisher.ns("memory-leaks");
 
   memoryLeaksNs.publish(getExposedToGlobalLeaksState());
@@ -152,15 +151,15 @@ export function remoteCommands({
     cancelExposingLeakedObjectsToGlobal,
   });
 
-  const { startHighlight, stopHighlight, startInspect, stopInspect } =
-    highlightApi;
-  highlightApi.subscribe(state => publisher.ns("highlighting").publish(state));
-  publisher.ns("highlighting").provide({
-    startHighlight,
-    stopHighlight,
-    startInspect,
-    stopInspect,
-  });
+  // const { startHighlight, stopHighlight, startInspect, stopInspect } =
+  //   highlightApi;
+  // highlightApi.subscribe(state => publisher.ns("highlighting").publish(state));
+  // publisher.ns("highlighting").provide({
+  //   startHighlight,
+  //   stopHighlight,
+  //   startInspect,
+  //   stopInspect,
+  // });
 }
 
 // import { connectPublisherWs } from "rempl";
