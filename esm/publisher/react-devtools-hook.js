@@ -15,7 +15,7 @@ export function createReactDevtoolsHook(attachRenderer, onUnsupportedRenderer, e
         renderers,
         inject(renderer, rendererId) {
             let id = rendererId || ++rendererSeedId;
-            if (typeof existing.inject === "function") {
+            if (rendererId == null && typeof existing.inject === "function") {
                 id = existing.inject(renderer);
             }
             else {

@@ -48,7 +48,7 @@ export function createReactDevtoolsHook(
 
     inject(renderer, rendererId) {
       let id = rendererId || ++rendererSeedId;
-      if (typeof existing.inject === "function") {
+      if (rendererId == null && typeof existing.inject === "function") {
         id = existing.inject(renderer);
       } else {
         // Follow React Devtools hook's behaviour in order for other tools

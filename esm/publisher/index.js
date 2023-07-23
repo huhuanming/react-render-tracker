@@ -1,5 +1,3 @@
-// import { getHost } from "rempl";
-// import config from "./config";
 import { installReactDevtoolsHook } from "./react-devtools-hook";
 import { publishReactRenderer, publishReactUnsupportedRenderer, remoteCommands, } from "./rempl-publisher";
 import { attach } from "./react-integration";
@@ -9,6 +7,3 @@ if (globalThis["__REACT_DEVTOOLS_GLOBAL_INTERNALS__"]) {
 }
 delete globalThis["__REACT_DEVTOOLS_GLOBAL_INTERNALS__"];
 delete globalThis["__REACT_DEVTOOLS_GLOBAL_INTERNALS_RENDERER_ID__"];
-// if (config.inpage) {
-//   getHost().activate();
-// }
