@@ -9,7 +9,7 @@ import {
 
 type ReactDevtoolsHook = {
   supportsFiber: boolean;
-  inject: (renderer: ReactInternals) => number;
+  inject: (renderer: ReactInternals, rendererId?: number) => number;
   // onScheduleRoot(rendererId: number, root: FiberRoot, children: any[]) {},
   onCommitFiberUnmount: (rendererId: number, fiber: Fiber) => void;
   onCommitFiberRoot: (
@@ -46,9 +46,8 @@ export function createReactDevtoolsHook(
     // see https://github.com/facebook/react/blob/4ff5f5719b348d9d8db14aaa49a48532defb4ab7/packages/react-refresh/src/ReactFreshRuntime.js#L509
     renderers,
 
-    inject(renderer) {
-      let id = ++rendererSeedId;
-
+    inject(renderer, rendererId) {
+      let id = rendererId || ++rendererSeedId;
       if (typeof existing.inject === "function") {
         id = existing.inject(renderer);
       } else {
@@ -107,7 +106,6 @@ export function createReactDevtoolsHook(
       }
 
       const integration = attachedIntegrations.get(rendererId);
-
       if (integration) {
         try {
           // console.log("handleCommitFiberRoot");
