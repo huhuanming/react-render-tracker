@@ -8,8 +8,9 @@
       "DOM",
       "DOM.iterable"
     ],
+    "outDir": "esm",
     "jsx": "react",
-    "sourceMap": true,
+    "sourceMap": false,
     "esModuleInterop": true,
     "allowJs": true,
     "strict": true,

@@ -1,0 +1,3 @@
+import type { CoreApi } from "./core";
+import { ReactDevtoolsHookHandlers, RecordEventHandler, ReactDispatcherTrapApi } from "../types";
+export declare function createReactDevtoolsHookHandlers({ ReactTypeOfWork, getFiberTypeId, getOrGenerateFiberId, getFiberIdThrows, getFiberIdUnsafe, getFiberOwnerId, getFiberById, removeFiber, getElementTypeForFiber, getDisplayNameForFiber, setRootPseudoKey, didFiberRender, removeRootPseudoKey, shouldFilterFiber, }: CoreApi, { getDispatchHookIndex, getFiberTypeHookInfo, flushDispatchCalls, }: ReactDispatcherTrapApi, recordEvent: RecordEventHandler): ReactDevtoolsHookHandlers;

@@ -1,0 +1,20 @@
+import { Message } from "common-types";
+import { Commit, FiberTypeDef, LinkedEvent, MessageFiber } from "../common/consumer-types";
+import { SubscribeMap, Subset, SubsetSplit } from "./subscription";
+import { Tree } from "./tree";
+export declare function createFiberDataset(events?: Message[]): {
+    allEvents: Message[];
+    linkedEvents: WeakMap<Message, LinkedEvent>;
+    commitById: SubscribeMap<number, Commit>;
+    fiberById: SubscribeMap<number, MessageFiber>;
+    fiberTypeDefById: SubscribeMap<number, FiberTypeDef>;
+    fibersByTypeId: SubsetSplit<number, number>;
+    fibersByProviderId: SubsetSplit<number, number>;
+    leakedFibers: Subset<number>;
+    parentTree: Tree;
+    parentTreeIncludeUnmounted: Tree;
+    ownerTree: Tree;
+    ownerTreeIncludeUnmounted: Tree;
+    appendEvents(events: Message[]): void;
+    selectTree(groupByParent: boolean, includeUnmounted: boolean): Tree;
+};
