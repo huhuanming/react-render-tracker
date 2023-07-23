@@ -59,7 +59,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-native": "0.71.8",
-    "rempl": "1.0.0-alpha.23",
+    "rempl": "https://github.com/huhuanming/rempl.git#3ed018347475dea459ac3200ad635d380da526a5",
     "semver": "^7.3.7",
     "source-map-js": "^1.0.2",
     "ts-jest": "^29.0.3",
